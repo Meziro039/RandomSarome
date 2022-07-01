@@ -1,5 +1,5 @@
 ## 概要
-[]()
+[https://meziro039.github.io/RandomSarome/](https://meziro039.github.io/RandomSarome/)
 
 ## 更新履歴
 ### Ver0.0.1
