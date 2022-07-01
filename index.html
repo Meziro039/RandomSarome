@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomSarome</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="jau/jsplay.js"></script>
+    <noscript><h1>JavaScriptをオンにしてくださいまし～！！！</h1></noscript>
+</head>
+<body>
+    <!-- おコードはみないでくださいまし～ -->
+
+    <!-- Main -->
+    <p>
+        <input type="button" id="start" value="Start(Nomal)" onclick="MANTEN()">
+        <input type="button" id="start" value="Start(RandomLoop)" onclick="START()">
+        <input type="button" id="stop" value="Stop" onclick="STOP()">
+        <input type="button" id="clean" value="Clean" onclick="CLEAN()">
+        <input type="number" id="waitms" value="350" onclick="">(ms)<br>
+    </p>
+    <p>
+        <span>Voice:壱百満天原サロメ</span>
+    </p>
+    <p>
+        <a id="link" href="https://www.youtube.com/channel/UCgIfLpQvelloDi8I0Ycbwpg">Youtube(壱百満天原サロメ)</a>
+        <a id="link" href="https://twitter.com/intent/tweet?text=RandomSarome">ツイート(サイトを共有)</a>
+        <hr>
+        <div id="SaromeText"></div>
+    </p>
+
+    <!-- Script -->
+    <script>
+        var Mix = ["壱","十","百","千","満","天","サロメ"];
+        var Trigger = null;
+        var rdm;
+        var Waitms;
+
+        function sleep(t){
+        return new Promise(function(resolve){
+            setTimeout(resolve,t);
+        })
+        }
+
+        async function random(){
+            while (true){
+
+                // 確率
+                rdm = Mix[Math.floor(Math.random() * Mix.length)];
+
+                // 音声
+                if (rdm == "壱"){
+                    stop();
+                    new Audio("mp3/ichi.mp3").play();
+                    play();
+                }
+                else if (rdm == "十") {
+                    stop();
+                    new Audio("mp3/zyu.mp3").play();
+                    play();
+                }
+                else if (rdm == "百") {
+                    stop();
+                    new Audio("mp3/hyaku.mp3").play();
+                    play();
+                }
+                else if (rdm == "千") {
+                    stop();
+                    new Audio("mp3/sen.mp3").play();
+                    play();
+                }
+                else if (rdm == "満") {
+                    stop();
+                    new Audio("mp3/man.mp3").play();
+                    play();
+                }
+                else if (rdm == "天") {
+                    stop();
+                    new Audio("mp3/ten.mp3").play();
+                    play();
+                }
+                else if (rdm == "サロメ") {
+                    stop();
+                    new Audio("mp3/sarome.mp3").play();
+                    play();
+                }
+
+                // 表示
+                document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + rdm;
+
+                // 停止
+                if (Trigger == 1){
+                    break;
+                }
+
+                // 待機
+                await sleep(Waitms);
+            }
+        }
+
+        async function MANTEN(){
+            new Audio("mp3/ichi.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "壱";
+            await sleep(350)
+            new Audio("mp3/zyu.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "十";
+            await sleep(350)
+            new Audio("mp3/hyaku.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "百";
+            await sleep(400)
+            new Audio("mp3/sen.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "千";
+            await sleep(350)
+            new Audio("mp3/man.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "満";
+            await sleep(350)
+            new Audio("mp3/ten.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "天";
+            await sleep(400)
+            new Audio("mp3/sarome.mp3").play();
+            document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + "サロメ";
+            await sleep(800)
+        }
+
+
+        function START(){
+            if (Trigger == 0){
+                ;
+            }
+            else {
+                Waitms = Number(document.getElementById("waitms").value);
+                Trigger = 0;
+                play()
+                random()
+            }
+        }
+
+        function STOP(){
+            stop()
+            Trigger = 1;
+        }
+
+        function CLEAN(){
+            document.getElementById("SaromeText").textContent = "";
+        }
+
+        console.log("%cみないでくださいまし～！！！", "color : #d143a6; font-size : 30px;");
+    </script>
+</body>
+</html>
