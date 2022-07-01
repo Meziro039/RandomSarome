@@ -52,41 +52,29 @@
                 rdm = Mix[Math.floor(Math.random() * Mix.length)];
 
                 // 音声
+                stop()
                 if (rdm == "壱"){
-                    stop();
                     new Audio("mp3/ichi.mp3").play();
-                    play();
                 }
                 else if (rdm == "十") {
-                    stop();
                     new Audio("mp3/zyu.mp3").play();
-                    play();
                 }
                 else if (rdm == "百") {
-                    stop();
                     new Audio("mp3/hyaku.mp3").play();
-                    play();
                 }
                 else if (rdm == "千") {
-                    stop();
                     new Audio("mp3/sen.mp3").play();
-                    play();
                 }
                 else if (rdm == "満") {
-                    stop();
                     new Audio("mp3/man.mp3").play();
-                    play();
                 }
                 else if (rdm == "天") {
-                    stop();
                     new Audio("mp3/ten.mp3").play();
-                    play();
                 }
                 else if (rdm == "サロメ") {
-                    stop();
                     new Audio("mp3/sarome.mp3").play();
-                    play();
                 }
+                play();
 
                 // 表示
                 document.getElementById("SaromeText").textContent = document.getElementById("SaromeText").textContent + rdm;
